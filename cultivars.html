@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>臺茶品種圖鑑 · 旭日茶葉</title>
+<meta name="description" content="金萱、翠玉、紅玉、山蘊……認識臺灣茶改場百年育成的茶樹品種,看懂你杯中那杯茶的身世。旭日茶葉整理。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #2f4a3c;
+  --accent-light: #a8bfa0;
+  --deep-bg: #22302a;
+  --bg: #f5f3ea;
+  --ink: #22302a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Noto Serif TC', serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+h1, h2, h3, p { margin: 0; }
+
+/* ── 導覽 ── */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 6vw;
+  border-bottom: 1px solid rgba(47,74,60,0.15);
+}
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink); }
+.brand-mark {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #f5f3ea;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 15px; letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+.brand-name { font-size: 19px; font-weight: 600; letter-spacing: 0.25em; }
+.brand-sub { font-size: 11px; color: rgba(34,48,42,0.55); letter-spacing: 0.3em; }
+.site-nav { display: flex; gap: 36px; font-size: 15px; font-family: 'Noto Sans TC', sans-serif; }
+.site-nav a { color: var(--ink); text-decoration: none; letter-spacing: 0.15em; transition: color 0.2s ease; }
+.site-nav a:hover { color: var(--accent); }
+
+/* ── 首屏 ── */
+.hero { padding: 90px 6vw 60px; max-width: 1200px; margin: 0 auto; }
+.eyebrow {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.hero h1 { font-size: clamp(36px, 4.5vw, 60px); font-weight: 900; letter-spacing: 0.1em; line-height: 1.5; margin-bottom: 26px; }
+.hero-lead { font-size: 17px; max-width: 36em; color: rgba(34,48,42,0.75); }
+
+/* ── 篩選 ── */
+.filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(245,243,234,0.95);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(47,74,60,0.15);
+  padding: 18px 6vw;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-label { font-size: 13px; letter-spacing: 0.3em; color: rgba(34,48,42,0.55); font-family: 'Noto Sans TC', sans-serif; margin-right: 6px; }
+.chip {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  padding: 8px 22px;
+  border: 1px solid rgba(47,74,60,0.35);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip.active { background: var(--accent); color: #f5f3ea; border-color: var(--accent); }
+.count-note { margin-left: auto; font-size: 13px; color: rgba(34,48,42,0.5); font-family: 'Noto Sans TC', sans-serif; }
+
+/* ── 卡片 ── */
+.grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 6vw 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+.card {
+  background: #fdfcf7;
+  border: 1px solid rgba(47,74,60,0.18);
+  padding: 30px 28px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card.hidden { display: none; }
+.card-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.card-no { font-size: 12px; letter-spacing: 0.3em; color: rgba(34,48,42,0.5); font-family: 'Noto Sans TC', sans-serif; }
+.card-year { font-size: 12px; letter-spacing: 0.2em; color: var(--accent); font-family: 'Noto Sans TC', sans-serif; }
+.card-name { font-size: 30px; font-weight: 700; letter-spacing: 0.2em; margin-bottom: 10px; }
+.card-aroma { font-size: 15px; color: rgba(34,48,42,0.75); margin-bottom: 16px; min-height: 3.8em; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.badge {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  font-family: 'Noto Sans TC', sans-serif;
+  padding: 3px 12px;
+  border: 1px solid rgba(47,74,60,0.3);
+  color: var(--accent);
+}
+.card-detail {
+  display: none;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(47,74,60,0.15);
+}
+.card.open .card-detail { display: block; }
+.detail-row { display: flex; gap: 16px; font-size: 14px; padding: 6px 0; align-items: baseline; }
+.detail-key { color: var(--accent); white-space: nowrap; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; letter-spacing: 0.2em; }
+.card-story { font-size: 14.5px; color: rgba(34,48,42,0.78); margin-top: 12px; }
+.card-hint { font-size: 12px; color: rgba(34,48,42,0.4); text-align: right; margin-top: 14px; font-family: 'Noto Sans TC', sans-serif; letter-spacing: 0.15em; }
+.card.open .card-hint { display: none; }
+
+/* ── 時間軸 ── */
+.timeline-section { background: var(--deep-bg); color: #e9e7da; padding: 90px 6vw; margin-top: 40px; }
+.timeline-inner { max-width: 1200px; margin: 0 auto; }
+.timeline-section h2 { font-size: 32px; font-weight: 700; letter-spacing: 0.15em; margin-bottom: 14px; }
+.timeline-sub { font-size: 15px; color: rgba(233,231,218,0.7); margin-bottom: 50px; max-width: 38em; }
+.timeline {
+  display: flex;
+  overflow-x: auto;
+  gap: 0;
+  padding-bottom: 20px;
+}
+.t-item {
+  min-width: 150px;
+  padding: 0 20px 0 0;
+  border-left: 1px solid rgba(233,231,218,0.25);
+  padding-left: 18px;
+  flex-shrink: 0;
+}
+.t-year { font-size: 22px; font-weight: 600; color: var(--accent-light); margin-bottom: 6px; }
+.t-names { font-size: 15px; line-height: 1.8; }
+.t-note { font-size: 12px; color: rgba(233,231,218,0.55); font-family: 'Noto Sans TC', sans-serif; margin-top: 4px; }
+
+/* ── 山茶血統 ── */
+.wild-callout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 90px 6vw;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6vw;
+  align-items: center;
+}
+.wild-vertical {
+  writing-mode: vertical-rl;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  color: rgba(47,74,60,0.85);
+  height: 320px;
+}
+.wild-callout p { font-size: 17px; color: rgba(34,48,42,0.78); margin-bottom: 20px; }
+.wild-link {
+  display: inline-block;
+  padding: 13px 34px;
+  background: var(--accent);
+  color: #f5f3ea;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  font-family: 'Noto Sans TC', sans-serif;
+  transition: background 0.2s ease;
+}
+.wild-link:hover { background: #1c2e24; }
+
+/* ── 頁尾 ── */
+.foot { border-top: 1px solid rgba(47,74,60,0.15); padding: 40px 6vw; max-width: 1200px; margin: 0 auto; }
+.source-note { font-size: 13px; color: rgba(34,48,42,0.55); line-height: 2; }
+.footer-row {
+  margin-top: 26px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(34,48,42,0.45);
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 700px) {
+  .site-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .wild-callout { grid-template-columns: 1fr; }
+  .wild-vertical { writing-mode: horizontal-tb; height: auto; }
+  .count-note { display: none; }
+  .footer-row { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <div class="brand-mark">旭日</div>
+    <div>
+      <div class="brand-name">旭日茶葉</div>
+      <div class="brand-sub">XU RI TEA · 鳳凰山</div>
+    </div>
+  </a>
+  <nav class="site-nav">
+    <a href="index.html">回首頁</a>
+    <a href="index.html#wild">野生山茶</a>
+    <a href="index.html#contact">訂購</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">茶之譜 · 臺茶品種</div>
+  <h1>你喝的茶,<br>都有名字與身世。</h1>
+  <p class="hero-lead">金萱的奶香、紅玉的肉桂薄荷、山蘊的山野氣息——這些名字背後,是臺灣茶葉改良場超過百年的育種故事。我們挑出消費者最常遇見的品種,點開卡片,認識你杯中那杯茶。</p>
+</section>
+
+<div class="filter-bar" id="filterBar">
+  <span class="filter-label">適合做</span>
+  <button class="chip active" data-filter="all">全部</button>
+  <button class="chip" data-filter="oolong">烏龍・包種</button>
+  <button class="chip" data-filter="black">紅茶</button>
+  <button class="chip" data-filter="green">綠茶</button>
+  <button class="chip" data-filter="white">白茶</button>
+  <span class="count-note" id="countNote"></span>
+</div>
+
+<main class="grid" id="grid"></main>
+
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <h2>命名年表</h2>
+    <p class="timeline-sub">最早的臺茶 1〜11 號誕生於紅茶與綠茶外銷的年代,只有編號、沒有名字;從 1981 年的金萱、翠玉開始,每個新品種都有了自己的名字。</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section class="wild-callout">
+  <div class="wild-vertical">山茶血統</div>
+  <div>
+    <div class="eyebrow">與野生山茶的緣分</div>
+    <p>細看譜系會發現:讓世界驚豔的臺茶 18 號「紅玉」,父本正是<strong>臺灣野生山茶</strong>;2019 年命名的臺茶 24 號「山蘊」,更是直接從臺東永康山的原生山茶選育而來。臺灣原生山茶的價值,正被一次次寫進正式的品種名錄。</p>
+    <p>這也是旭日茶葉與國立臺灣大學合作、深入鳳凰山尋訪野生山茶的原因——山裡的茶樹,是臺灣茶最珍貴的基因寶庫。</p>
+    <a class="wild-link" href="index.html#wild">認識我們的野生山茶</a>
+  </div>
+</section>
+
+<footer class="foot">
+  <p class="source-note">資料來源:農業部茶及飲料作物改良場「茶及飲料作物改良場育成之茶樹品種介紹」(112.07.25 修正製表)。品種血統、命名年份與適製茶類依原表整理;香氣與風味描述為市場通行之品飲特徵,僅供選茶參考。</p>
+  <div class="footer-row">
+    <span>旭日茶葉 XU RI TEA</span>
+    <span>鳳凰山烏龍 · 野生山茶</span>
+  </div>
+</footer>
+
+<script>
+const CULTIVARS = [
+  {
+    no: '臺茶 12 號', name: '金萱', year: 1981,
+    aroma: '天然奶香與淡雅桂花香,滋味甘醇滑潤,臺灣種植面積最廣的命名品種。',
+    types: ['oolong'], badges: ['烏龍茶', '包種茶'],
+    parents: '臺農 8 號 × 硬枝紅心',
+    story: '育種家吳振鐸以祖母之名「金萱」命名。那縷若有似無的奶香完全是茶樹天生的本事,不是加料——這也讓金萱成為許多人的第一杯臺灣茶。',
+    fit: '喜歡香甜順口、剛開始喝茶的你。'
+  },
+  {
+    no: '臺茶 13 號', name: '翠玉', year: 1981,
+    aroma: '濃郁高揚的花香,近似玉蘭與野薑花,個性鮮明。',
+    types: ['oolong'], badges: ['烏龍茶', '包種茶'],
+    parents: '硬枝紅心 × 臺農 80 號',
+    story: '與金萱同年發表的姊妹作,以吳振鐸母親之名「翠玉」命名。花香比金萱更張揚,適合喜歡香氣奔放的茶友。',
+    fit: '偏愛花香型、喜歡香氣有存在感的你。'
+  },
+  {
+    no: '臺茶 18 號', name: '紅玉', year: 1999,
+    aroma: '天然肉桂香與淡淡薄荷涼韻,被譽為「臺灣香」的世界級紅茶。',
+    types: ['black'], badges: ['紅茶'],
+    parents: '緬甸大葉種 × 臺灣野生山茶',
+    story: '父本是臺灣野生山茶——山林的基因給了紅玉獨一無二的氣息。茶湯金紅透亮、甘甜不澀,無糖純飲就足夠精彩,是日月潭紅茶的代表。',
+    fit: '紅茶愛好者、想送出國際級臺灣味的你。'
+  },
+  {
+    no: '臺茶 19 號', name: '碧玉', year: 2004,
+    aroma: '風味近青心烏龍,清雅細緻,湯色蜜綠。',
+    types: ['oolong'], badges: ['包種茶', '烏龍茶'],
+    parents: '臺茶 12 號 × 青心烏龍',
+    story: '金萱與青心烏龍的孩子,繼承了母系的好種好管與父系的細膩風味,是包種茶區的實力派。',
+    fit: '喜歡傳統清香烏龍風味的你。'
+  },
+  {
+    no: '臺茶 20 號', name: '迎香', year: 2004,
+    aroma: '花香濃郁持久,香氣迎面而來,故名「迎香」。',
+    types: ['oolong'], badges: ['包種茶', '烏龍茶'],
+    parents: '2022 品系 × 青心烏龍',
+    story: '與碧玉同年命名的兄弟作,香氣表現特別突出,做包種茶花香清揚。',
+    fit: '追求香氣層次的包種茶、烏龍茶愛好者。'
+  },
+  {
+    no: '臺茶 21 號', name: '紅韻', year: 2008,
+    aroma: '柑橘類花果蜜香,近似柚花與橙香,韻味華麗。',
+    types: ['black'], badges: ['紅茶'],
+    parents: 'FKK-1 天然雜交選育',
+    story: '繼紅玉之後的另一款特色紅茶,香氣走華麗的花果蜜路線,和紅玉的肉桂薄荷各擅勝場。',
+    fit: '想在紅玉之外嚐點不一樣的紅茶迷。'
+  },
+  {
+    no: '臺茶 22 號', name: '沁玉', year: 2014,
+    aroma: '清新花香帶果甜,滋味柔和,耐候好種的新生代。',
+    types: ['oolong'], badges: ['包種茶', '烏龍茶'],
+    parents: 'TC6 選育',
+    story: '新生代的包種、烏龍適製品種,風味清沁如其名。',
+    fit: '喜歡清爽路線、常喝冷泡茶的你。'
+  },
+  {
+    no: '臺茶 23 號', name: '祁韻', year: 2017,
+    aroma: '承襲祁門紅茶血統,甜香近似蜜糖與玫瑰,滋味醇和。',
+    types: ['black'], badges: ['紅茶'],
+    parents: '祁門系之天然雜交',
+    story: '血統可追溯到世界三大高香紅茶之一的祁門紅茶,1938 年雜交、2017 年才正式命名——一杯等了近八十年的茶。',
+    fit: '偏好溫潤甜香、經典紅茶路線的你。'
+  },
+  {
+    no: '臺茶 24 號', name: '山蘊', year: 2019,
+    aroma: '獨特的菇蕈、杏仁與咖啡香氣,山野氣息深沉。',
+    types: ['green', 'black'], badges: ['綠茶', '紅茶'],
+    parents: '臺灣原生山茶(臺東永康變種)',
+    story: '從臺東永康山的原生山茶直接選育,不假外求的純臺灣血統。低咖啡因、風味自成一格,是原生山茶正式「轉正」的里程碑。',
+    fit: '喜歡野生山茶、想喝點與眾不同的你。'
+  },
+  {
+    no: '臺茶 25 號', name: '紫韻', year: 2021,
+    aroma: '芽葉泛紫、花青素豐富,花香之外帶熟果甜韻。',
+    types: ['green', 'black'], badges: ['綠茶', '紅茶'],
+    parents: '緬甸大葉種天然雜交',
+    story: '最年輕的命名品種,紫紅色的芽葉是它的招牌,沖泡後的湯色與風味都自帶話題。',
+    fit: '喜歡嚐鮮、注重機能成分的你。'
+  },
+  {
+    no: '臺茶 14〜17 號', name: '白文 · 白燕 · 白鶴 · 白鷺', year: 1983,
+    aroma: '「四白」系列。其中白鷺常用於製作壽眉白茶與蜜香茶款。',
+    types: ['white', 'oolong', 'green'], badges: ['白茶', '烏龍茶', '綠茶'],
+    parents: '臺農 983 號、臺農 335 號 等雜交選育',
+    story: '1983 年一口氣命名的四姊妹,名字都帶「白」。市場上較少單獨標示,但在白茶與東方美人系的茶款裡,常能遇見它們的身影。',
+    fit: '白茶、東方美人愛好者可以留意的名字。'
+  },
+];
+
+const grid = document.getElementById('grid');
+const countNote = document.getElementById('countNote');
+
+CULTIVARS.forEach((c, i) => {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.dataset.types = c.types.join(' ');
+  card.innerHTML = `
+    <div class="card-top">
+      <span class="card-no">${c.no}</span>
+      <span class="card-year">${c.year} 命名</span>
+    </div>
+    <h3 class="card-name">${c.name}</h3>
+    <p class="card-aroma">${c.aroma}</p>
+    <div class="badges">${c.badges.map(b => `<span class="badge">${b}</span>`).join('')}</div>
+    <div class="card-detail">
+      <div class="detail-row"><span class="detail-key">血統</span><span>${c.parents}</span></div>
+      <div class="detail-row"><span class="detail-key">適合誰</span><span>${c.fit}</span></div>
+      <p class="card-story">${c.story}</p>
+    </div>
+    <div class="card-hint">點卡片看故事 +</div>
+  `;
+  card.addEventListener('click', () => card.classList.toggle('open'));
+  grid.appendChild(card);
+});
+
+document.getElementById('filterBar').addEventListener('click', (e) => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  const f = chip.dataset.filter;
+  let shown = 0;
+  document.querySelectorAll('.card').forEach(card => {
+    const show = f === 'all' || card.dataset.types.split(' ').includes(f);
+    card.classList.toggle('hidden', !show);
+    if (show) shown++;
+  });
+  countNote.textContent = f === 'all' ? `共 ${shown} 款` : `${shown} 款符合`;
+});
+countNote.textContent = `共 ${CULTIVARS.length} 款`;
+
+const TIMELINE = [
+  { year: 1969, names: '臺茶 1〜4 號', note: '紅茶外銷年代' },
+  { year: 1973, names: '臺茶 5〜8 號', note: '綠茶與紅茶' },
+  { year: 1975, names: '臺茶 9〜11 號', note: '尚無名字的編號' },
+  { year: 1981, names: '金萱 · 翠玉', note: '開始有名字' },
+  { year: 1983, names: '白文 · 白燕 · 白鶴 · 白鷺', note: '「四白」系列' },
+  { year: 1999, names: '紅玉', note: '野生山茶之子' },
+  { year: 2004, names: '碧玉 · 迎香', note: '' },
+  { year: 2008, names: '紅韻', note: '' },
+  { year: 2014, names: '沁玉', note: '' },
+  { year: 2017, names: '祁韻', note: '祁門血統' },
+  { year: 2019, names: '山蘊', note: '原生山茶選育' },
+  { year: 2021, names: '紫韻', note: '最年輕的一號' },
+];
+document.getElementById('timeline').innerHTML = TIMELINE.map(t => `
+  <div class="t-item">
+    <div class="t-year">${t.year}</div>
+    <div class="t-names">${t.names}</div>
+    ${t.note ? `<div class="t-note">${t.note}</div>` : ''}
+  </div>
+`).join('');
+</script>
+</body>
+</html>
