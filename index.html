@@ -3,53 +3,509 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="旭日茶葉位於南投鹿谷茶區，精選凍頂烏龍、杉林溪高山烏龍、日月潭紅玉紅茶與台灣白茶，帶你喝懂南投風土。">
-<title>從鹿谷出發——旭日茶葉的南投四味｜凍頂烏龍・杉林溪高山茶・紅玉紅茶・台灣白茶</title>
+<title>旭日茶葉 · 鳳凰山烏龍與野生山茶</title>
+<meta name="description" content="旭日茶葉深入鳳凰山雲霧茶區,以傳統工藝焙製烏龍,並與國立臺灣大學合作尋訪野生山茶。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body{font-family:"PingFang TC","Microsoft JhengHei",serif;max-width:720px;margin:40px auto;line-height:1.9;color:#2b2b2b;padding:0 20px}
-h1{font-size:1.7em;color:#2e5e4e;line-height:1.5}
-h2{font-size:1.25em;color:#2e5e4e;border-left:4px solid #2e5e4e;padding-left:10px;margin-top:2em}
-.tips{background:#f4f7f5;padding:10px 16px;border-radius:6px;font-size:.95em}
-footer{border-top:1px solid #ccc;margin-top:3em;padding-top:1em;font-size:.85em;color:#666}
+:root {
+  --accent: #2f4a3c;
+  --accent-light: #a8bfa0;
+  --deep-bg: #22302a;
+  --bg: #f5f3ea;
+  --ink: #22302a;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Noto Serif TC', serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.9;
+  letter-spacing: 0.05em;
+}
+
+h1, h2, h3, p { margin: 0; }
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+.wrap { max-width: 1200px; margin: 0 auto; }
+.wrap-narrow { max-width: 1000px; margin: 0 auto; text-align: center; }
+
+.eyebrow {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.5em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.eyebrow-light { color: var(--accent-light); }
+
+.section-title {
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin: 0 0 24px;
+}
+
+.body-text { font-size: 17px; margin: 0 0 24px; color: rgba(34,48,42,0.78); }
+.body-light { font-size: 17px; margin: 0 0 24px; color: rgba(233,231,218,0.85); }
+
+/* ── 導覽 ── */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 6vw;
+  border-bottom: 1px solid rgba(47,74,60,0.15);
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand-mark {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #f5f3ea;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 15px; letter-spacing: 0.1em;
+  flex-shrink: 0;
+}
+.brand-name { font-size: 19px; font-weight: 600; letter-spacing: 0.25em; }
+.brand-sub { font-size: 11px; color: rgba(34,48,42,0.55); letter-spacing: 0.3em; }
+.site-nav {
+  display: flex; gap: 36px;
+  font-size: 15px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 400;
+}
+.site-nav a {
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  transition: color 0.2s ease;
+}
+.site-nav a:hover { color: var(--accent); }
+
+/* ── 首屏 ── */
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  min-height: 78vh;
+  padding: 60px 6vw;
+  overflow: hidden;
+}
+.hero-main { animation: riseIn 1s ease both; }
+.hero-main h1 {
+  font-size: clamp(44px, 5.5vw, 84px);
+  font-weight: 900;
+  line-height: 1.35;
+  margin: 0 0 30px;
+  letter-spacing: 0.08em;
+}
+.hero-lead { font-size: 17px; max-width: 26em; color: rgba(34,48,42,0.75); margin: 0 0 44px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 14px 38px;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 0.3em;
+  font-family: 'Noto Sans TC', sans-serif;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.btn-filled { background: var(--accent); color: #f5f3ea; }
+.btn-filled:hover { background: #1c2e24; }
+.btn-outline { border: 1px solid rgba(47,74,60,0.4); color: var(--ink); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-verses {
+  display: flex;
+  gap: 44px;
+  margin-right: 3vw;
+  animation: riseIn 1.2s ease 0.2s both;
+}
+.verse {
+  writing-mode: vertical-rl;
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: 0.7em;
+  color: rgba(47,74,60,0.75);
+  height: 380px;
+}
+.verse-bordered { border-left: 1px solid rgba(47,74,60,0.25); padding-left: 26px; }
+.verse-offset { margin-top: 60px; }
+
+/* ── 共用區塊 ── */
+.section { padding: 110px 6vw; }
+.section-dark { background: var(--deep-bg); color: #e9e7da; }
+.section-tint { background: rgba(47,74,60,0.06); }
+.section-header-center { text-align: center; margin-bottom: 70px; }
+
+.vertical-title {
+  writing-mode: vertical-rl;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  height: 300px;
+  color: #e9e7da;
+}
+.vertical-title-muted { color: rgba(47,74,60,0.85); }
+
+/* ── 鳳凰山產地 ── */
+.origin-grid {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 6vw;
+  align-items: start;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(233,231,218,0.2);
+  border: 1px solid rgba(233,231,218,0.2);
+}
+.stat { background: var(--deep-bg); padding: 24px; }
+.stat-num { font-size: 28px; font-weight: 600; }
+.stat-label { font-size: 13px; color: rgba(233,231,218,0.6); font-family: 'Noto Sans TC', sans-serif; }
+
+.process-col {
+  border-left: 1px solid rgba(233,231,218,0.25);
+  padding-left: 40px;
+  align-self: center;
+}
+.col-heading {
+  font-size: 15px;
+  letter-spacing: 0.35em;
+  color: var(--accent-light);
+  margin-bottom: 26px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.process-list { display: grid; gap: 22px; font-size: 17px; color: rgba(233,231,218,0.85); }
+.process-row { display: flex; gap: 18px; align-items: baseline; }
+.process-time { color: var(--accent-light); font-size: 14px; white-space: nowrap; }
+
+/* ── 野生山茶 ── */
+.wild-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 6vw;
+  align-items: start;
+}
+.wild-quote {
+  align-self: center;
+  border-right: 1px solid rgba(47,74,60,0.2);
+  padding-right: 40px;
+}
+.quote-text {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 2.1;
+  letter-spacing: 0.12em;
+  color: rgba(34,48,42,0.85);
+}
+.quote-sub {
+  font-size: 15px;
+  color: rgba(34,48,42,0.55);
+  margin-top: 30px;
+  letter-spacing: 0.15em;
+}
+
+.spec-list { border-top: 1px solid rgba(47,74,60,0.2); margin-top: 36px; }
+.spec-row {
+  display: flex;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid rgba(47,74,60,0.2);
+  align-items: baseline;
+}
+.spec-label {
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.spec-value { font-size: 16px; }
+
+/* ── 茶品 ── */
+.tea-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+.tea-card {
+  background: var(--bg);
+  border: 1px solid rgba(47,74,60,0.18);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: border-color 0.2s ease;
+}
+.tea-card:hover { border-color: var(--accent); }
+.tea-vertical-name {
+  writing-mode: vertical-rl;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: rgba(47,74,60,0.65);
+  height: 230px;
+  margin: 0 auto;
+  border-left: 1px solid rgba(47,74,60,0.2);
+  padding-left: 16px;
+}
+.tea-head { display: flex; justify-content: space-between; align-items: baseline; }
+.tea-head h3 { font-size: 22px; font-weight: 600; letter-spacing: 0.1em; }
+.tea-tag { font-size: 13px; color: var(--accent); letter-spacing: 0.2em; font-family: 'Noto Sans TC', sans-serif; }
+.tea-desc { font-size: 15px; color: rgba(34,48,42,0.7); margin-top: 12px; }
+
+/* ── 聯絡訂購 ── */
+.contact { padding: 110px 6vw 70px; }
+.contact-title { margin: 0 0 24px; }
+.contact-lead {
+  font-size: 16px;
+  color: rgba(233,231,218,0.75);
+  max-width: 32em;
+  margin: 0 auto 60px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(233,231,218,0.2);
+  border: 1px solid rgba(233,231,218,0.2);
+  text-align: left;
+}
+.contact-card { background: var(--deep-bg); padding: 34px; }
+.contact-label {
+  font-size: 13px;
+  color: var(--accent-light);
+  letter-spacing: 0.3em;
+  margin-bottom: 14px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.contact-value { font-size: 20px; letter-spacing: 0.08em; }
+.contact-sub { font-size: 13px; color: rgba(233,231,218,0.6); margin-top: 8px; }
+
+.disclaimer {
+  margin-top: 70px;
+  padding: 22px 28px;
+  border: 1px solid rgba(233,231,218,0.25);
+  font-size: 14px;
+  color: rgba(233,231,218,0.8);
+  letter-spacing: 0.15em;
+  line-height: 2;
+  text-align: left;
+}
+
+.footer-row {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(233,231,218,0.15);
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: rgba(233,231,218,0.5);
+  font-family: 'Noto Sans TC', sans-serif;
+  letter-spacing: 0.2em;
+}
+
+/* ── 響應式(原設計未定義,採合理收斂) ── */
+@media (max-width: 980px) {
+  .origin-grid, .wild-grid { grid-template-columns: 1fr; }
+  .vertical-title { writing-mode: horizontal-tb; height: auto; margin-bottom: 20px; }
+  .process-col { border-left: none; padding-left: 0; border-top: 1px solid rgba(233,231,218,0.25); padding-top: 30px; margin-top: 10px; }
+  .wild-quote { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(47,74,60,0.2); padding-bottom: 30px; margin-bottom: 10px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-verses { display: none; }
+  .tea-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .site-header { flex-direction: column; gap: 18px; align-items: flex-start; }
+  .site-nav { gap: 22px; }
+  .tea-grid { grid-template-columns: 1fr; }
+  .footer-row { flex-direction: column; gap: 8px; }
+}
 </style>
+<script>
+// 旭日茶葉 — 外觀設定
+// accent: 主色,可選 '#2f4a3c'(墨綠 / 預設)、'#5a7a4f'(茶綠)、'#8a6a3b'(褐金)、'#4a5f6e'(靛藍)
+// darkSections: 深色區塊(產地/訂購)背景是否使用最深的墨綠,關閉則改用較淺的深綠
+const THEME = {
+  accent: '#2f4a3c',
+  darkSections: true,
+};
+
+(function applyTheme(theme) {
+  const root = document.documentElement.style;
+  root.setProperty('--accent', theme.accent);
+  root.setProperty('--deep-bg', theme.darkSections ? '#22302a' : '#3a5245');
+})(THEME);
+</script>
 </head>
 <body>
 
-<h1>從鹿谷出發——旭日茶葉的南投四味</h1>
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-mark">旭日</div>
+    <div>
+      <div class="brand-name">旭日茶葉</div>
+      <div class="brand-sub">XU RI TEA · 鳳凰山</div>
+    </div>
+  </div>
+  <nav class="site-nav">
+    <a href="#origin">鳳凰山</a>
+    <a href="#wild">野生山茶</a>
+    <a href="#contact">訂購</a>
+  </nav>
+</header>
 
-<p>南投是全台唯一不靠海的縣，卻是台灣茶的心臟。從鹿谷的凍頂山、竹山的杉林溪，到魚池的日月潭畔，短短數十公里，海拔從六百公尺一路爬升到一千九百公尺，孕育出風格迥異的好茶。旭日茶葉的家就在鹿谷茶區——我們依據農業部茶及飲料作物改良場的研究脈絡，選出四款南投風土的代表作，帶你一杯一杯喝懂這座茶之縣。</p>
+<section class="hero">
+  <div class="hero-main">
+    <div class="eyebrow">高山雲霧 · 手採手焙</div>
+    <h1>一盞旭日,<br>一山春色。</h1>
+    <p class="hero-lead">旭日茶葉深入鳳凰山雲霧茶區,以傳統工藝焙製烏龍,並尋訪深山之中的野生山茶——把整座山的氣息,收進一杯茶湯裡。</p>
+    <div class="hero-actions">
+      <a href="#origin" class="btn btn-filled">探訪茶山</a>
+      <a href="#contact" class="btn btn-outline">聯絡訂購</a>
+    </div>
+  </div>
+  <div class="hero-verses">
+    <div class="verse verse-bordered">野茶自有雲霧香</div>
+    <div class="verse verse-offset">鳳凰山中歲月長</div>
+  </div>
+</section>
 
-<h2>凍頂烏龍｜鹿谷的傳家滋味</h2>
-<p>凍頂烏龍原產於鹿谷鄉凍頂山一帶，是台灣焙香型烏龍的經典。發酵程度約25–30%，講究「綠葉鑲紅邊」，再以布球熱團揉成緊結的半球形，最後用心焙火——發酵與烘焙的層層工夫，成就它甘醇厚實、滑潤深長的喉韻。</p>
-<p>乾茶墨綠帶光澤，茶湯金黃亮麗，焙香中透著熟果甜韻，越泡越見底蘊。這是老茶客的日常，也是最經得起時間考驗的伴手禮。身為鹿谷茶莊，這一味是旭日茶葉的根。</p>
-<p class="tips"><strong>適合誰</strong>：喜愛傳統焙火風味的你、資深茶客、找伴手禮的你。<br>
-<strong>怎麼泡</strong>：95–100°C 熱水，第一泡約 50–60 秒，餐後尤佳。</p>
+<section id="origin" class="section section-dark">
+  <div class="wrap origin-grid">
+    <div class="vertical-title">鳳凰山產地</div>
+    <div>
+      <div class="eyebrow eyebrow-light">壹 · 山之所在</div>
+      <p class="body-light">鳳凰山終年雲霧繚繞,晝夜溫差大,土壤富含礦物。茶樹在慢裡生長,葉片肥厚、內質飽滿,成就烏龍茶特有的山韻與蜜香。</p>
+      <p class="body-light" style="margin-bottom:40px;">旭日茶葉與山上的老茶農合作,春冬兩季手工採摘一心二葉,日光萎凋、慢火焙籠,守著代代相傳的節氣與火候。</p>
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num">1,200m</div><div class="stat-label">茶園海拔</div></div>
+        <div class="stat"><div class="stat-num">春 · 冬</div><div class="stat-label">兩季手採</div></div>
+        <div class="stat"><div class="stat-num">18 小時</div><div class="stat-label">日光萎凋與做青</div></div>
+        <div class="stat"><div class="stat-num">炭焙</div><div class="stat-label">慢火焙籠工藝</div></div>
+      </div>
+    </div>
+    <div class="process-col">
+      <div class="col-heading">節氣 · 工序</div>
+      <div class="process-list">
+        <div class="process-row"><span class="process-time">清明</span><span>手採一心二葉,趕在日出前上山</span></div>
+        <div class="process-row"><span class="process-time">午後</span><span>日光萎凋,靜置室內做青</span></div>
+        <div class="process-row"><span class="process-time">入夜</span><span>殺青、揉捻,鎖住山場香氣</span></div>
+        <div class="process-row"><span class="process-time">數日</span><span>炭火慢焙,退火後方封罐</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>杉林溪高山烏龍｜竹山雲霧裡的蘭花香</h2>
-<p>沿著溪頭往山裡走，就是海拔一千二到一千九百公尺的杉林溪茶區。高山氣候冷涼、早晚雲霧籠罩、日照短，茶樹芽葉的苦澀成分因此降低、甘味物質提高，葉肉厚而柔軟——這正是高山烏龍甘醇滑軟的祕密。</p>
-<p>以青心烏龍製成的杉林溪茶，乾茶翠綠鮮活，茶湯蜜綠明亮，入口是淡雅蘭花香與清冽的山頭氣，滋味細緻富活性、非常耐泡。若選金萱（台茶12號），則多一縷柔和奶香。</p>
-<p class="tips"><strong>適合誰</strong>：第一次喝台灣茶的朋友、喜歡清爽花香的你。<br>
-<strong>怎麼泡</strong>：95–100°C，第一泡約 50–60 秒；冷泡同樣出色。</p>
+<section id="wild" class="section">
+  <div class="wrap wild-grid">
+    <div class="wild-quote">
+      <p class="quote-text">不施肥,<br>不修剪,<br>一年只採一次。</p>
+      <p class="quote-sub">山給予的,無法複製的味道。</p>
+    </div>
+    <div>
+      <div class="eyebrow">貳 · 山野之味</div>
+      <h2 class="section-title">野生山茶</h2>
+      <p class="body-text">在鳳凰山人跡罕至的原始林間,散落著無人栽種的野生茶樹。它們與林木共生,根系深入岩層,不施肥、不修剪,一年只採一次。</p>
+      <p class="body-text">野生山茶並非旭日茶葉自產,而是與國立臺灣大學合作研究、協力推動的成果——從茶樹調查到採製工序,結合學術專業與旭日的焙火工藝。茶湯清透、野韻十足,初嚐微苦、回甘綿長,是山給予的、無法複製的味道。</p>
+      <div class="spec-list">
+        <div class="spec-row"><div class="spec-label">香氣</div><div class="spec-value">蘭花香、苔蘚氣息、淡淡蜜韻</div></div>
+        <div class="spec-row"><div class="spec-label">滋味</div><div class="spec-value">入口微苦,回甘持久,喉韻深沉</div></div>
+        <div class="spec-row"><div class="spec-label">來源</div><div class="spec-value">與臺灣大學合作,每年僅一採,限量分享</div></div>
+      </div>
+    </div>
+    <div class="vertical-title vertical-title-muted">野生山茶</div>
+  </div>
+</section>
 
-<h2>日月潭紅茶「紅玉」｜世界驚豔的台灣香</h2>
-<p>台茶18號「紅玉」是茶改場魚池分場的傳奇之作——以緬甸大葉種為母本、台灣野生山茶為父本育成，1999年正式命名。沖泡後散發天然的肉桂香與淡雅薄荷涼韻，這股獨一無二的氣息，被國際紅茶專家譽為「台灣香」。</p>
-<p>茶湯金紅鮮明、澄清透亮，滋味濃醇鮮爽、甘甜不澀，無糖純飲就足夠精彩，做奶茶基底更是奢侈的享受。從鹿谷往魚池不過半小時車程，這杯日月潭畔的紅寶石，是南投給世界的名片。</p>
-<p class="tips"><strong>適合誰</strong>：紅茶愛好者、無糖茶飲族、想送出國際級台灣味的你。<br>
-<strong>怎麼泡</strong>：90–95°C，第一泡約 40–50 秒；冷泡清爽迷人。</p>
+<section class="section section-tint">
+  <div class="wrap">
+    <div class="section-header-center">
+      <div class="eyebrow">參 · 茶品</div>
+      <h2 class="section-title">旭日茶葉 · 精選</h2>
+    </div>
+    <div class="tea-grid">
+      <article class="tea-card">
+        <div class="tea-vertical-name">鳳凰山烏龍</div>
+        <div class="tea-body">
+          <div class="tea-head"><h3>鳳凰山烏龍</h3><span class="tea-tag">經典</span></div>
+          <p class="tea-desc">中焙火烏龍,蜜香沉穩、喉韻甘醇,最能代表鳳凰山的一款茶。</p>
+        </div>
+      </article>
+      <article class="tea-card">
+        <div class="tea-vertical-name">雲霧高山烏龍</div>
+        <div class="tea-body">
+          <div class="tea-head"><h3>雲霧高山烏龍</h3><span class="tea-tag">清香</span></div>
+          <p class="tea-desc">輕發酵、清香型,湯色蜜綠,入口是高山雲霧的清冽花香。</p>
+        </div>
+      </article>
+      <article class="tea-card">
+        <div class="tea-vertical-name">紅烏龍</div>
+        <div class="tea-body">
+          <div class="tea-head"><h3>紅烏龍</h3><span class="tea-tag">重焙</span></div>
+          <p class="tea-desc">重發酵、足火焙製,湯色琥珀紅亮,熟果蜜香濃郁,滋味圓潤醇厚。</p>
+        </div>
+      </article>
+      <article class="tea-card">
+        <div class="tea-vertical-name">野生山茶</div>
+        <div class="tea-body">
+          <div class="tea-head"><h3>野生山茶</h3><span class="tea-tag">協作限量</span></div>
+          <p class="tea-desc">與臺灣大學合作之作,原始林間野放茶樹,一年一採。野韻幽長,數量有限,售完待來年。</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
-<h2>台灣白茶｜最溫柔的一杯</h2>
-<p>白茶是發酵最淺的部分發酵茶——茶菁經長時間重度萎凋，不攪拌、不炒菁、不揉捻，直接乾燥。近乎「無為」的工藝，保留了茶葉最原始的清甜。旭日茶葉以南投在地青心烏龍茶菁製作，讓熟悉的品種展現全然不同的面貌。</p>
-<p>湯色淺杏黃、清澈透亮，香氣是清雅花香與淡淡蜜韻，滋味柔和鮮爽、幾乎沒有刺激感。存放得宜還能隨時間陳化出更深邃的韻味，值得慢慢收藏。</p>
-<p class="tips"><strong>適合誰</strong>：注重養生、對咖啡因較敏感、想在夜晚安心喝茶的你。<br>
-<strong>怎麼泡</strong>：85–90°C 溫潤沖泡，第一泡 60–90 秒。</p>
-
-<h2>四款茶，一座南投</h2>
-<p>清晨提神，泡一壺杉林溪高山烏龍；午後配點心，紅玉的台灣香最對味；晚餐後，凍頂的焙火喉韻幫你收尾；睡前想放鬆，白茶溫柔不打擾。從鹿谷出發，旭日茶葉把南投的海拔與風土，裝進你的每一個日常時刻。</p>
-
-<footer>
-<p>旭日茶葉｜南投鹿谷茶區</p>
-<p><em>本文茶葉知識參考農業部茶及飲料作物改良場公開研究資料整理撰寫。</em></p>
-</footer>
+<section id="contact" class="section section-dark contact">
+  <div class="wrap-narrow">
+    <div class="eyebrow eyebrow-light">肆 · 訂購</div>
+    <h2 class="section-title contact-title">與山對飲,由此開始</h2>
+    <p class="contact-lead">茶品皆為小量手作,依季節限量供應。歡迎來電或來訊詢問當季茶單,亦提供茶樣試飲與禮盒訂製。</p>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-label">電話訂購</div>
+        <div class="contact-value">0988-672-600</div>
+        <div class="contact-sub">每日 09:00–18:00</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">LINE 訂購</div>
+        <div class="contact-value">0937246737</div>
+        <div class="contact-sub">加入好友,查看當季茶單</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">茶行地址</div>
+        <div class="contact-value">鳳凰山茶區</div>
+        <div class="contact-sub">歡迎預約上山品茶</div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      鄭重聲明:「協立茶葉加工廠」已不存在,現僅有「旭日茶葉加工廠」。<br>本品牌名稱與內容,盜用必究。
+    </div>
+    <div class="footer-row">
+      <span>旭日茶葉 XU RI TEA</span>
+      <span>鳳凰山烏龍 · 野生山茶</span>
+    </div>
+  </div>
+</section>
 
 </body>
 </html>
